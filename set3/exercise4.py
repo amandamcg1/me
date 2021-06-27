@@ -3,6 +3,7 @@
 
 
 import math
+import time
 
 # import time
 
@@ -26,6 +27,7 @@ def binary_search(low, high, actual_number):
     """
     tries = 0
     guess = 0
+
 
     # Write your code in here
 
