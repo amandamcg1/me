@@ -34,11 +34,12 @@ def get_some_details():
          dictionaries.
     """
     json_data = open(LOCAL + "/lazyduck.json").read()
+    print(json_data["results"])
 
     data = json.loads(json_data)
     return {"lastName": None, "password": None, "postcodePlusID": None}
 
-
+'''
 def wordy_pyramid():
     """Make a pyramid out of real words.
 
@@ -114,7 +115,7 @@ def diarist():
     TIP: this might come in handy if you need to hack a 3d print file in the future.
     """
     pass
-
+'''
 
 if __name__ == "__main__":
     functions = [
