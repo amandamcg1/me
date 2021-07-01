@@ -50,9 +50,9 @@ def stubborn_asker(low, high):
     Look up the docs for input
     """
     while True:
-        x = int(input("Provide a number: "))
-        if low < x < high:
-            return x
+        request_number = int(input(f"Provide a number: {low} and {high}"))
+        if low <= request_number <= high: 
+            return request_number
 
 
 def not_number_rejector(message):
@@ -72,7 +72,7 @@ def not_number_rejector(message):
         
 
 
-def super_asker(low, high):
+def super_asker(low, high, message):
     """Robust asking function.
 
     Combine what you learnt from stubborn_asker and not_number_rejector
@@ -81,12 +81,15 @@ def super_asker(low, high):
     amount of code.
     """
     while True:
-        asked = not_number_rejector(input("Enter a number:"))
-        if low < int(asked) < high:
-            print("Well done, {} is within range".format(asked))
-            return asked
-        else:
-            print("{} is not within range".format(asked))
+        try:
+            ask_for_number = int(input(message))
+            print("{} is a number".format(ask_for_number))
+            if low < ask_for_number < high:
+                print("Well done, {} is within range".format(asked))
+                return ask_for_number
+        except Exception as e:
+            print("{} is not a number".format(e))
+        
         
 
 
