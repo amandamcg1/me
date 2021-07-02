@@ -162,8 +162,6 @@ def diarist():
     for line in lines:
         if "M10 P1" in line:
             count += 1
-        elif "M11 P1" in line:
-            print("yink")
 
     print(count)
     laser = open("set4\lasers.pew", mode="w+")
