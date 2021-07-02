@@ -9,7 +9,7 @@ def loop_ranger(start, stop=None, step=1):
     """Return a list of numbers between start and stop in steps of step.
 
     Do this using any method apart from JUST using range() #TODO: clarify this wording
-    The look up the docs for range(), you can answer this with just the range 
+    The look up the docs for range(), you can answer this with just the range
     function, but we'd like you to do it the long way, probably using a loop.
     """
     steps = []
@@ -51,14 +51,14 @@ def stubborn_asker(low, high):
     """
     while True:
         request_number = int(input(f"Provide a number: {low} and {high}"))
-        if low <= request_number <= high: 
+        if low <= request_number <= high:
             return request_number
 
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
 
-    Ask for a number, and if the response is actually NOT a number 
+    Ask for a number, and if the response is actually NOT a number
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
@@ -69,10 +69,9 @@ def not_number_rejector(message):
             return ask_for_number
         except Exception as e:
             print("{} is not a number".format(e))
-        
 
 
-def super_asker(low, high, message):
+def super_asker(low, high):
     """Robust asking function.
 
     Combine what you learnt from stubborn_asker and not_number_rejector
@@ -82,15 +81,13 @@ def super_asker(low, high, message):
     """
     while True:
         try:
-            ask_for_number = int(input(message))
-            print("{} is a number".format(ask_for_number))
+            ask_for_number = int(input("Enter a number: "))
+            print(f"{ask_for_number} is a number")
             if low < ask_for_number < high:
-                print("Well done, {} is within range".format(asked))
+                print(f"Well done, {ask_for_number} is within range")
                 return ask_for_number
         except Exception as e:
-            print("{} is not a number".format(e))
-        
-        
+            print(f"{e} is not a number")
 
 
 if __name__ == "__main__":
@@ -108,4 +105,7 @@ if __name__ == "__main__":
     print("\nnot_number_rejector")
     not_number_rejector("Enter a number: ")
     print("\nsuper_asker")
-    super_asker(33, 42)
+    super_asker(
+        33,
+        42,
+    )
