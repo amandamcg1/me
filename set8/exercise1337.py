@@ -272,32 +272,25 @@ def fast_filler(number_of_words=200) -> str:
     it'll convert integer keys to strings.
     If you get this one to work, you are a Very Good Programmer™!
     """
-    fname = "set8\dict_cache.json"
+    fname = "dict_cache.json"
     words = []
-
-    if os.path.isfile(fname) == True:
-        my_dict = json.load(open(fname))
+    if os.path.isfile(fname):
+        with open(fname) as f:
+            my_dict = json.load(f)
     else:
         my_dict = make_filler_text_dictionary()
         input_file = open(fname, mode="w")
         json.dump(my_dict, input_file)
         input_file.close()
-
-    with open("set8\dict_cache.json", mode="r", encoding="utf-8") as f:
-        lines = f.readlines()
-        for item in f:
-            if ":" in item:
-                key, value = item.split(":", 1)
-                my_dict[key] = value
-        for i in range(number_of_words):
-            random_key = random.choice(list(my_dict.keys()))
-            random_value = random.choice(my_dict[random_key])
-            words.append(random_value)
-
-        words[0] = words[0].capitalize()
-        print(words)
-        print(" ".join(words) + ".")
-        return " ".join(words) + "."
+    for i in range(number_of_words):
+        random_key = random.choice(list(my_dict.keys()))
+        random_value = random.choice(my_dict[random_key])
+        words.append(random_value)
+    words[0] = words[0].capitalize()
+    print(words)
+    para = " ".join(words) + "."
+    print(para)
+    return para
 
 
 if __name__ == "__main__":
